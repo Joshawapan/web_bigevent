@@ -35,26 +35,12 @@ function getUserInfo() {
             // 调用 renderAvatar 渲染用户的头像
             renderAvatar(res.data)
         },
-        // // 不论成功还是失败，最终都会调用 complete 回调函数
-        // complete: function(res) {
-        //     // console.log('执行了 complete 回调')
-        //     // console.log(res)
-        //     // 在 complete 回调函数中，可以使用 responseJSON 拿到
-        //     // 服务器响应回来的数据
-        //     if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！')
-        //     {
-        //     // 1.清空本地存储的 token
-        //     localStorage.removeItem('token')
-        //     // 2.重新跳转到登录页面
-        //     location.href = '/login.html'
-        //     }
-        // }
     })
 }
 
 // 渲染用户的头像
 function renderAvatar(user) {
-    // 1.获取用户的名单
+    // 1.获取用户的名称
     var name = user.nickname || user.username
     // 2.设置欢迎的文本
     $('#welcome').html('欢迎&nbsp;&nbsp;' + name)
@@ -62,7 +48,7 @@ function renderAvatar(user) {
     if (user.user_pic !== null) {
         // 3.1 渲染图片头像
         $('.layui-nav-img').attr('src', user.user_pic).show()
-        $('.text-avator').hide()
+        $('.text-avatar').hide()
     } else {
         // 3.2 渲染文本头像
         $('.layui-nav-img').hide()
@@ -70,3 +56,4 @@ function renderAvatar(user) {
         $('.text-avatar').html(first).show()
     }
 }
+
